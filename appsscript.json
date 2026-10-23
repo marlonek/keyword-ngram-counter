@@ -3,8 +3,14 @@
   "dependencies": {},
   "exceptionLogging": "STACKDRIVER",
   "runtimeVersion": "V8",
-  "oauthScopes": [
-    "https://www.googleapis.com/auth/spreadsheets.currentonly",
-    "https://www.googleapis.com/auth/script.container.ui"
-  ]
+  "addOns": {
+    "common": {
+      "name": "Keyword n-gram counter",
+      "logoUrl": "https://raw.githubusercontent.com/marlonek/keyword-ngram-counter/main/store/icons/icon128.png",
+      "homepageTrigger": {
+        "runFunction": "onHomepage"
+      }
+    },
+    "sheets": {}
+  }
 }

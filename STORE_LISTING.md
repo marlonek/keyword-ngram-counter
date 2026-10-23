@@ -20,19 +20,20 @@ Keyword n-gram counter finds how often 1-, 2-, 3-, 4- and 5-word phrases repeat 
 text — so you can spot over-used phrases, check keyword focus, and tighten repetitive copy.
 
 HOW IT WORKS
-• Analyze the cells you select in the sheet, or paste text straight into the sidebar.
-• Choose which phrase lengths to count (1 to 5 words).
-• Set a minimum repeat count and optionally ignore common stop-words (English + Polish).
-• See the top phrases in the sidebar and write the full tables (phrase, count, %) to a new sheet.
+• Open the add-on from the Google Sheets side panel.
+• Paste your text into the card.
+• Pick the phrase length (1 to 5 words), a minimum repeat count, and optionally ignore
+  common stop-words (English + Polish).
+• Click Analyze — the card lists the top repeated phrases with their count and share (%).
 
 GOOD FOR
 • SEO and content editors checking keyword density and phrase repetition.
 • Writers cleaning up repetitive wording.
-• Anyone auditing a column of titles, descriptions or product copy in bulk.
+• Anyone reviewing titles, descriptions or product copy.
 
 PRIVACY FIRST
-The add-on runs on the current spreadsheet only. It makes no network calls, collects no
-data, uses no tracking, and sends nothing anywhere — all processing happens in your sheet.
+The add-on requests no permissions. It only processes the text you paste into its card —
+it makes no network calls, reads no spreadsheet, collects no data, and sends nothing anywhere.
 
 ---
 
@@ -45,18 +46,18 @@ data, uses no tracking, and sends nothing anywhere — all processing happens in
 - Terms of service URL: https://bartoszkoplin.pl/keyword-ngram-terms/
 - Developer contact email: kontakt@bartoszkoplin.pl
 
-## OAuth scopes (from appsscript.json) and justifications
-- `.../auth/spreadsheets.currentonly`
-  Reads only the cells the user selects and writes the results table to a new tab in the
-  same spreadsheet the add-on is opened in. It never accesses other spreadsheets.
-- `.../auth/script.container.ui`
-  Shows the add-on's sidebar interface inside Google Sheets.
+## OAuth scopes
+- **None.** This is a Google Workspace Add-on built with CardService; it requests no OAuth
+  scopes. Data Access, the Marketplace SDK App Configuration, and `appsscript.json` must all
+  list **no scopes**. With no scopes, **no OAuth verification (and no demo video) is required**.
 
-Both scopes are **non-sensitive**, so no sensitive/restricted-scope verification is required.
+## Marketplace integration
+- Integrate as a **Google Workspace Add-on** (not an Editor/Sheets add-on), pointing to the
+  Apps Script deployment. The add-on appears in the Sheets side panel.
 
 ## Data usage
-- Collects or transmits user data? **No.** Everything runs locally in the current
-  spreadsheet; the add-on makes no network requests.
+- Collects or transmits user data? **No.** The add-on only processes the text pasted into its
+  card; it reads no spreadsheet and makes no network requests.
 
 ---
 

@@ -12,19 +12,15 @@ no tracking, and no cookies.
 
 ## How the add-on works
 
-The add-on runs entirely inside Google Sheets, on the current spreadsheet only. When you
-run an analysis, it reads the cells you selected (or the text you pasted into the sidebar),
-counts repeated phrases, and writes the results to a new tab in the same spreadsheet. This
-processing happens in your spreadsheet and the results never leave it. The add-on makes
-**no network requests of its own**.
+The add-on shows a card in the Google Sheets side panel. You paste text into the card, and
+the add-on counts the repeated phrases and shows the result in the same card. The processing
+happens inside the add-on from the text you paste; it does not read your spreadsheet and the
+result never leaves the card. The add-on makes **no network requests**.
 
-## Permissions and why they are needed
+## Permissions
 
-- **See, edit, create, and delete only the specific Google Sheets spreadsheet this add-on
-  is used in** (`spreadsheets.currentonly`) — to read the cells you select and write the
-  results table into the same spreadsheet. It never accesses any other spreadsheet.
-- **Display and run third-party web content in prompts and sidebars** (`script.container.ui`)
-  — to show the add-on's sidebar interface.
+**None.** The add-on requests no OAuth scopes and has no access to your Google account, your
+spreadsheets, or any other data. It only processes the text you paste into its card.
 
 ## Data sharing
 
