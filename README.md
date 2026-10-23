@@ -1,46 +1,56 @@
-# Keyword n-gram counter — Google Sheets custom function
+# Keyword n-gram counter — Google Sheets add-on
 
-A spreadsheet function, `=NGRAMS()`, that counts how often **1–5 word phrases** repeat in
-text or a range of cells. Useful for spotting over-used phrases, checking keyword focus,
-and cleaning up repetitive copy.
+Find repeated **1–5 word phrases** in your text. Useful for spotting over-used
+phrases, checking keyword focus, and cleaning up repetitive copy.
 
-```
-=NGRAMS(A1:A50)                 counts 2-word phrases in A1:A50
-=NGRAMS(A1:A50, 3)              counts 3-word phrases
-=NGRAMS(A1:A50, 2, 3)          only phrases that repeat at least 3 times
-=NGRAMS(A1:A50, 2, 2, TRUE)    ignore common stop-words (EN + PL)
-=NGRAMS("some text here", 1)    works on a plain string too
-```
+- Analyze the **cells you select** in the sheet, or **text you paste** in the sidebar.
+- Choose phrase lengths (1–5), a minimum repeat count, and optionally ignore stop-words (EN + PL).
+- See the top phrases in the sidebar and write the full tables to a new sheet.
 
-It returns a table (phrase, count, %) that spills into the cells, most frequent first.
+## Privacy & permissions (built to pass verification)
 
-## Privacy & permissions
+The add-on runs on the **current spreadsheet only** and makes **no network calls** —
+nothing is sent anywhere. It uses only **non-sensitive** OAuth scopes:
 
-**None.** `=NGRAMS()` is a pure custom function — it only processes the values you pass to
-it. It requests **no OAuth scopes**, makes **no network calls**, and stores nothing. Because
-it needs no scopes, it requires **no OAuth verification**.
+- `spreadsheets.currentonly` — read the selected cells and write the results sheet.
+- `script.container.ui` — show the sidebar.
+
+Avoiding sensitive scopes (e.g. external URL fetching) keeps OAuth verification light.
+A URL + meta-tag mode would require the sensitive `script.external_request` scope and a
+heavier review — left for a possible v2.
 
 ## Files
 
 ```
-appsscript.json  — manifest (runtime only; no OAuth scopes)
-Code.gs          — the NGRAMS custom function + n-gram engine
+appsscript.json  — manifest (runtime + OAuth scopes)
+Code.gs          — n-gram engine + sidebar wiring + results writer
+Sidebar.html     — the UI
 ```
 
-## Try it in ~2 minutes
+## Try it in ~5 minutes (test deployment)
 
 1. Open a Google Sheet → **Extensions → Apps Script**.
-2. Paste the contents of `Code.gs` into the default `Code.gs` file (replace what is there).
-3. Click the gear (Project settings) → **Show "appsscript.json"**, then paste `appsscript.json` over it.
-4. Save. Back in the sheet, type `=NGRAMS(A1:A10)` over some text cells.
+2. Paste the contents of `Code.gs` into the default `Code.gs` file.
+3. **+ → HTML** → name it `Sidebar` → paste `Sidebar.html`.
+4. Click the gear (Project settings) → **Show "appsscript.json"**, then paste `appsscript.json` over it.
+5. Save. Reload the Sheet → menu **Keyword n-grams → Open analyzer**. Approve the scopes once.
 
-## Publishing to Google Workspace Marketplace
+### Faster, with clasp (optional)
+```bash
+npm i -g @google/clasp
+clasp login
+clasp create --type sheets --title "Keyword n-gram counter"
+clasp push
+```
 
-1. Link a **Google Cloud project** to the Apps Script project.
-2. Configure the **OAuth consent screen** (name, support + privacy URLs).
-3. Enable the **Google Workspace Marketplace SDK**, fill the **store listing**, and submit.
-4. The add-on requests **no scopes**, so no OAuth verification is required — the review
-   is only the standard Marketplace listing review.
+## Publishing to Google Workspace Marketplace (later)
+
+1. Create / link a **Google Cloud project** to the Apps Script project.
+2. Configure the **OAuth consent screen** (app name, logo, support + privacy URLs).
+3. Enable the **Google Workspace Marketplace SDK**, fill the **store listing** (name,
+   description, screenshots, category), and submit.
+4. Because only non-sensitive scopes are used, the review is lighter than for sensitive
+   ones (no external-request justification needed).
 
 ## Author
 

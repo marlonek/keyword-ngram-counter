@@ -12,16 +12,19 @@ no tracking, and no cookies.
 
 ## How the add-on works
 
-The add-on provides a single spreadsheet function, `=NGRAMS()`. It is a pure custom
-function: it only processes the values you pass to it in the formula, counts repeated
-phrases, and returns the result into the cells. The processing happens inside the formula
-and the result never leaves your spreadsheet. The add-on makes **no network requests**.
+The add-on runs entirely inside Google Sheets, on the current spreadsheet only. When you
+run an analysis, it reads the cells you selected (or the text you pasted into the sidebar),
+counts repeated phrases, and writes the results to a new tab in the same spreadsheet. This
+processing happens in your spreadsheet and the results never leave it. The add-on makes
+**no network requests of its own**.
 
-## Permissions
+## Permissions and why they are needed
 
-**None.** The add-on requests no OAuth scopes and has no access to your Google account,
-your files, or any other spreadsheet. It only sees the values passed to the `=NGRAMS()`
-formula.
+- **See, edit, create, and delete only the specific Google Sheets spreadsheet this add-on
+  is used in** (`spreadsheets.currentonly`) — to read the cells you select and write the
+  results table into the same spreadsheet. It never accesses any other spreadsheet.
+- **Display and run third-party web content in prompts and sidebars** (`script.container.ui`)
+  — to show the add-on's sidebar interface.
 
 ## Data sharing
 
