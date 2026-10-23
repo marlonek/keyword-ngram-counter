@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy — Keyword n-gram counter</title>
+<meta name="robots" content="index,follow" />
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    max-width: 760px; margin: 0 auto; padding: 48px 20px 80px;
+    line-height: 1.7; color: #1c1c1a; background: #fff;
+  }
+  h1 { font-size: 28px; margin-bottom: 4px; }
+  .updated { color: #6b6a65; font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 19px; margin: 30px 0 8px; }
+  p, li { font-size: 16px; }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  a { color: #185FA5; }
+  strong { font-weight: 600; }
+  .nav { margin-bottom: 28px; font-size: 14px; }
+  .nav a { text-decoration: none; font-weight: 500; }
+  .foot { margin-top: 44px; padding-top: 18px; border-top: 1px solid #e3e1d8;
+    font-size: 14px; color: #6b6a65; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1b1b19; color: #e8e6df; }
+    .updated { color: #a7a69f; }
+    a { color: #6fa8e6; }
+    .foot { border-top-color: #333; color: #a7a69f; }
+  }
+</style>
+</head>
+<body>
+  <nav class="nav"><a href="https://bartoszkoplin.pl/">&larr; bartoszkoplin.pl — strona główna</a></nav>
+  <h1>Privacy Policy — Keyword n-gram counter</h1>
+  <p class="updated">Last updated: 23 October 2026</p>
+
+  <p>Keyword n-gram counter ("the add-on") is designed to be privacy-preserving by default.</p>
+
+  <h2>What data we collect</h2>
+  <p><strong>None.</strong> The add-on does not collect, store remotely, transmit, sell, or
+  share any personal data, spreadsheet data, or usage data. There are no analytics, no
+  telemetry, no tracking, and no cookies.</p>
+
+  <h2>How the add-on works</h2>
+  <p>The add-on runs entirely inside Google Sheets, on the current spreadsheet only. When you
+  run an analysis, it reads the cells you selected (or the text you pasted into the sidebar),
+  counts repeated phrases, and writes the results to a new tab in the same spreadsheet. This
+  processing happens in your spreadsheet and the results never leave it. The add-on makes
+  <strong>no network requests of its own</strong>.</p>
+
+  <h2>Permissions and why they are needed</h2>
+  <ul>
+    <li><strong>Access to the current spreadsheet only</strong> (<code>spreadsheets.currentonly</code>)
+    — to read the cells you select and write the results table into the same spreadsheet.
+    It never accesses any other spreadsheet.</li>
+    <li><strong>Show the sidebar UI</strong> (<code>script.container.ui</code>) — to display
+    the add-on's interface inside Google Sheets.</li>
+  </ul>
+
+  <h2>Data sharing</h2>
+  <p>We do not sell or transfer user data to third parties, and we do not use user data for
+  any purpose unrelated to the add-on's single purpose (counting repeated phrases in your text).</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the updated version will be published at the same location with a
+  new "Last updated" date.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy: <a href="mailto:kontakt@bartoszkoplin.pl">kontakt@bartoszkoplin.pl</a></p>
+
+  <footer class="foot">
+    <a href="https://bartoszkoplin.pl/">bartoszkoplin.pl</a> &middot;
+    <a href="https://bartoszkoplin.pl/keyword-ngram-terms/">Terms of Service</a> &middot;
+    <a href="https://github.com/marlonek/keyword-ngram-counter">Source on GitHub</a>
+  </footer>
+</body>
+</html>

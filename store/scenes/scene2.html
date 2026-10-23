@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1280px; height: 800px; overflow: hidden; }
+body { font-family: Arial, "Segoe UI", Roboto, sans-serif; background: #e9eef3; color: #202124; }
+.cap { padding: 24px 48px 16px; }
+.cap h1 { font-size: 29px; font-weight: 700; letter-spacing: -0.3px; }
+.cap p { font-size: 16px; color: #5f6368; margin-top: 6px; }
+.win { margin: 0 48px; height: 560px; border-radius: 12px; overflow: hidden;
+  background: #fff; box-shadow: 0 18px 50px rgba(20,30,50,.18); display: flex; }
+.sheet { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.bar { height: 46px; background: #0b7a44; color: #fff; display: flex; align-items: center; gap: 10px; padding: 0 16px; }
+.bar .ico { width: 22px; height: 22px; border-radius: 4px; background: #fff; }
+.bar .title { font-size: 15px; font-weight: 500; }
+.toolbar { height: 34px; background: #f1f3f4; border-bottom: 1px solid #e0e0e0; }
+.tabsbar { height: 30px; background:#f8f9fa; border-top:1px solid #e0e0e0; display:flex; align-items:flex-end; gap:2px; padding:0 10px; }
+.sheettab { font-size:12px; padding:5px 12px; color:#5f6368; border:1px solid #e0e0e0; border-bottom:none; background:#fff; }
+.sheettab.active { color:#0b7a44; font-weight:bold; box-shadow: inset 0 -2px 0 #0b7a44; }
+.grid { flex: 1; overflow: hidden; }
+table.gr { width: 100%; border-collapse: collapse; font-size: 13px; }
+.gr th { background: #f8f9fa; color: #5f6368; font-weight: 500; border: 1px solid #e0e0e0; height: 26px; }
+.gr td { border: 1px solid #e8eaed; padding: 4px 8px; height: 26px; }
+.gr td.idx { background: #f8f9fa; color: #5f6368; text-align: center; width: 34px; }
+.gr td.b { font-weight: bold; }
+.gr td.num { text-align: right; }
+
+.side { width: 330px; border-left: 1px solid #e0e0e0; padding: 14px; font-size: 13px; overflow: hidden; }
+.side h2 { font-size: 15px; margin-bottom: 2px; }
+.side .sub { color: #5f6368; font-size: 12px; margin-bottom: 12px; }
+.lbl { font-weight: bold; margin: 8px 0 3px; display: block; }
+.sizes span.box, .box { display:inline-block; width:12px; height:12px; border:1.5px solid #5f6368; border-radius:2px; vertical-align:-2px; }
+.box.on { background:#1a73e8; border-color:#1a73e8; }
+.radio { display:inline-block; width:12px; height:12px; border:1.5px solid #5f6368; border-radius:50%; vertical-align:-2px; }
+.radio.on { border:4px solid #1a73e8; }
+.btn { margin-top: 12px; padding: 8px 14px; background: #1a73e8; color:#fff; border-radius:4px; font-size:13px; display:inline-block; }
+.note { background:#f1f3f4; border-radius:4px; padding:8px; font-size:12px; color:#3c4043; margin-top:10px; }
+</style>
+</head>
+<body>
+  <div class="cap">
+    <h1>Full phrase tables, written to a new sheet</h1>
+    <p>Every phrase length with its count and % — exported into a fresh tab you can sort and keep.</p>
+  </div>
+
+  <div class="win">
+    <div class="sheet">
+      <div class="bar"><span class="ico"></span><span class="title">Content audit — Google Sheets</span></div>
+      <div class="toolbar"></div>
+      <div class="grid">
+        <table class="gr">
+          <tr><th class="idx"></th><th style="width:55%">A</th><th>B — count</th><th>C — %</th></tr>
+          <tr><td class="idx">1</td><td class="b">Source</td><td>selected cells</td><td></td></tr>
+          <tr><td class="idx">2</td><td class="b">Total words</td><td>58</td><td></td></tr>
+          <tr><td class="idx">3</td><td class="b" style="font-size:14px">2-word phrases</td><td></td><td></td></tr>
+          <tr><td class="idx">4</td><td class="b">phrase</td><td class="b">count</td><td class="b">%</td></tr>
+          <tr><td class="idx">5</td><td>wireless headphones</td><td class="num">4</td><td class="num">7.5</td></tr>
+          <tr><td class="idx">6</td><td>headphones for</td><td class="num">3</td><td class="num">5.7</td></tr>
+          <tr><td class="idx">7</td><td>premium sound</td><td class="num">2</td><td class="num">3.8</td></tr>
+          <tr><td class="idx">8</td><td>for long</td><td class="num">2</td><td class="num">3.8</td></tr>
+          <tr><td class="idx">9</td><td class="b" style="font-size:14px">1-word phrases</td><td></td><td></td></tr>
+          <tr><td class="idx">10</td><td>headphones</td><td class="num">6</td><td class="num">10.3</td></tr>
+          <tr><td class="idx">11</td><td>premium</td><td class="num">3</td><td class="num">5.2</td></tr>
+        </table>
+      </div>
+      <div class="tabsbar">
+        <span class="sheettab">Data</span>
+        <span class="sheettab active">n-grams 10-23 14:32</span>
+      </div>
+    </div>
+
+    <div class="side">
+      <h2>Keyword n-gram counter</h2>
+      <div class="sub">Find repeated 1–5 word phrases in your text.</div>
+      <div><span class="radio"></span> Paste text &nbsp; <span class="radio on"></span> Selected cells</div>
+      <span class="lbl">Phrase lengths (words)</span>
+      <div class="sizes"><span class="box on"></span> 1 <span class="box on"></span> 2 <span class="box on"></span> 3 <span class="box"></span> 4 <span class="box"></span> 5</div>
+      <div style="margin-top:8px"><span class="box on"></span> write full results to a new sheet</div>
+      <span class="btn">Analyze</span>
+      <div class="note">Results are written to a new tab so you can sort, filter and keep them next to your data.</div>
+    </div>
+  </div>
+</body>
+</html>

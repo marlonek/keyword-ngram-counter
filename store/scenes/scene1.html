@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1280px; height: 800px; overflow: hidden; }
+body { font-family: Arial, "Segoe UI", Roboto, sans-serif; background: #e9eef3; color: #202124; }
+.cap { padding: 24px 48px 16px; }
+.cap h1 { font-size: 29px; font-weight: 700; letter-spacing: -0.3px; }
+.cap p { font-size: 16px; color: #5f6368; margin-top: 6px; }
+.win { margin: 0 48px; height: 560px; border-radius: 12px; overflow: hidden;
+  background: #fff; box-shadow: 0 18px 50px rgba(20,30,50,.18); display: flex; }
+.sheet { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.bar { height: 46px; background: #0b7a44; color: #fff; display: flex; align-items: center; gap: 10px; padding: 0 16px; }
+.bar .ico { width: 22px; height: 22px; border-radius: 4px; background: #fff;
+  background-image: linear-gradient(90deg,#0b7a44 0 100%); position: relative; }
+.bar .title { font-size: 15px; font-weight: 500; }
+.toolbar { height: 34px; background: #f1f3f4; border-bottom: 1px solid #e0e0e0; }
+.grid { flex: 1; overflow: hidden; }
+table.gr { width: 100%; border-collapse: collapse; font-size: 13px; }
+.gr th { background: #f8f9fa; color: #5f6368; font-weight: 500; border: 1px solid #e0e0e0; height: 26px; }
+.gr td { border: 1px solid #e8eaed; padding: 5px 8px; height: 30px; }
+.gr td.idx { background: #f8f9fa; color: #5f6368; text-align: center; width: 34px; }
+.sel { outline: 2px solid #1a73e8; outline-offset: -2px; background: #e8f0fe; }
+
+.side { width: 330px; border-left: 1px solid #e0e0e0; padding: 14px; font-size: 13px; overflow: hidden; }
+.side h2 { font-size: 15px; margin-bottom: 2px; }
+.side .sub { color: #5f6368; font-size: 12px; margin-bottom: 12px; }
+.lbl { font-weight: bold; margin: 8px 0 3px; display: block; }
+.radios label, .sizes label, .chk { font-weight: normal; margin-right: 10px; font-size: 13px; }
+.box { display:inline-block; width:12px; height:12px; border:1.5px solid #5f6368; border-radius:2px; vertical-align:-2px; }
+.box.on { background:#1a73e8; border-color:#1a73e8; }
+.radio { display:inline-block; width:12px; height:12px; border:1.5px solid #5f6368; border-radius:50%; vertical-align:-2px; }
+.radio.on { border:4px solid #1a73e8; }
+.btn { margin-top: 12px; padding: 8px 14px; background: #1a73e8; color:#fff; border-radius:4px; font-size:13px; display:inline-block; }
+.tabs { margin-top: 14px; border-bottom: 1px solid #eee; }
+.tab { display:inline-block; padding:5px 8px; font-size:13px; }
+.tab.active { border-bottom:2px solid #1a73e8; font-weight:bold; }
+table.res { width:100%; border-collapse:collapse; margin-top:6px; }
+.res th, .res td { text-align:left; padding:3px 4px; border-bottom:1px solid #eee; font-size:12px; }
+.res .num { text-align:right; }
+.meta { color:#5f6368; font-size:12px; margin-top:10px; }
+</style>
+</head>
+<body>
+  <div class="cap">
+    <h1>Spot repeated phrases in your content</h1>
+    <p>Count 1–5 word phrase repetitions in selected cells or pasted text — right inside Google Sheets.</p>
+  </div>
+
+  <div class="win">
+    <div class="sheet">
+      <div class="bar"><span class="ico"></span><span class="title">Content audit — Google Sheets</span></div>
+      <div class="toolbar"></div>
+      <div class="grid">
+        <table class="gr">
+          <tr><th class="idx"></th><th style="width:60%">A — Product description</th><th>B — Page</th></tr>
+          <tr><td class="idx">1</td><td class="sel">Premium wireless headphones with premium sound and premium comfort</td><td class="sel">/headphones</td></tr>
+          <tr><td class="idx">2</td><td class="sel">Wireless headphones for travel, wireless headphones for work</td><td class="sel">/travel</td></tr>
+          <tr><td class="idx">3</td><td class="sel">Noise cancelling headphones with long battery life and fast charging</td><td class="sel">/noise</td></tr>
+          <tr><td class="idx">4</td><td class="sel">Best wireless headphones for the price, wireless headphones review</td><td class="sel">/review</td></tr>
+          <tr><td class="idx">5</td><td class="sel">Comfortable headphones for long listening with premium sound quality</td><td class="sel">/comfort</td></tr>
+          <tr><td class="idx">6</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          <tr><td class="idx">7</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="side">
+      <h2>Keyword n-gram counter</h2>
+      <div class="sub">Find repeated 1–5 word phrases in your text.</div>
+      <div class="radios"><span class="radio"></span> Paste text &nbsp; <span class="radio on"></span> Selected cells</div>
+      <span class="lbl">Phrase lengths (words)</span>
+      <div class="sizes"><span class="box on"></span> 1 <span class="box on"></span> 2 <span class="box on"></span> 3 <span class="box"></span> 4 <span class="box"></span> 5</div>
+      <div style="margin-top:8px"><span class="chk"><span class="box"></span> ignore stop-words</span></div>
+      <span class="btn">Analyze</span>
+      <div class="meta">Total words: 58</div>
+      <div class="tabs"><span class="tab active">2-word</span><span class="tab">1-word</span><span class="tab">3-word</span></div>
+      <table class="res">
+        <tr><th>phrase</th><th class="num">count</th><th class="num">%</th></tr>
+        <tr><td>wireless headphones</td><td class="num">4</td><td class="num">7.5</td></tr>
+        <tr><td>premium sound</td><td class="num">2</td><td class="num">3.8</td></tr>
+        <tr><td>headphones for</td><td class="num">3</td><td class="num">5.7</td></tr>
+        <tr><td>for long</td><td class="num">2</td><td class="num">3.8</td></tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
