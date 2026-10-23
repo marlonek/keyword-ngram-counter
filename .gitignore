@@ -1,0 +1,10 @@
+# clasp (contains the Apps Script project id)
+.clasp.json
+.clasprc.json
+
+# deps / OS cruft
+node_modules/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
