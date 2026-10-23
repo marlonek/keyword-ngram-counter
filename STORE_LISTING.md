@@ -20,10 +20,12 @@ Keyword n-gram counter finds how often 1-, 2-, 3-, 4- and 5-word phrases repeat 
 text — so you can spot over-used phrases, check keyword focus, and tighten repetitive copy.
 
 HOW IT WORKS
-• Analyze the cells you select in the sheet, or paste text straight into the sidebar.
-• Choose which phrase lengths to count (1 to 5 words).
-• Set a minimum repeat count and optionally ignore common stop-words (English + Polish).
-• See the top phrases in the sidebar and write the full tables (phrase, count, %) to a new sheet.
+It adds one spreadsheet function, =NGRAMS().
+• =NGRAMS(A1:A50) — counts 2-word phrases in the range.
+• =NGRAMS(A1:A50, 3) — set the phrase length (1 to 5 words).
+• =NGRAMS(A1:A50, 2, 3) — only phrases that repeat at least 3 times.
+• =NGRAMS(A1:A50, 2, 2, TRUE) — ignore common stop-words (English + Polish).
+It returns a table (phrase, count, %) that spills into the cells, most frequent first.
 
 GOOD FOR
 • SEO and content editors checking keyword density and phrase repetition.
@@ -31,8 +33,9 @@ GOOD FOR
 • Anyone auditing a column of titles, descriptions or product copy in bulk.
 
 PRIVACY FIRST
-The add-on runs on the current spreadsheet only. It makes no network calls, collects no
-data, uses no tracking, and sends nothing anywhere — all processing happens in your sheet.
+=NGRAMS() is a pure custom function — it only processes the values you pass to it. It
+requests no permissions, makes no network calls, collects no data, and sends nothing
+anywhere.
 
 ---
 
@@ -45,18 +48,14 @@ data, uses no tracking, and sends nothing anywhere — all processing happens in
 - Terms of service URL: https://bartoszkoplin.pl/keyword-ngram-terms/
 - Developer contact email: kontakt@bartoszkoplin.pl
 
-## OAuth scopes (from appsscript.json) and justifications
-- `.../auth/spreadsheets.currentonly`
-  Reads only the cells the user selects and writes the results table to a new tab in the
-  same spreadsheet the add-on is opened in. It never accesses other spreadsheets.
-- `.../auth/script.container.ui`
-  Shows the add-on's sidebar interface inside Google Sheets.
-
-Both scopes are **non-sensitive**, so no sensitive/restricted-scope verification is required.
+## OAuth scopes
+- **None.** The add-on is a pure custom function (`=NGRAMS()`) and requests no OAuth scopes.
+  Data Access, the Marketplace SDK App Configuration, and `appsscript.json` must all list
+  **no scopes** (they must match). With no scopes, **no OAuth verification is required**.
 
 ## Data usage
-- Collects or transmits user data? **No.** Everything runs locally in the current
-  spreadsheet; the add-on makes no network requests.
+- Collects or transmits user data? **No.** `=NGRAMS()` only processes the values passed to
+  it; the add-on makes no network requests and requests no permissions.
 
 ---
 
